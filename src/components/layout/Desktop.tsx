@@ -5,6 +5,7 @@ import { WindowManager } from '../os/WindowManager';
 // import { AnimatedBackground } from '../ui/AnimatedBackground';
 import { ControlCenter } from '../os/ControlCenter';
 import { useStore } from '../../store/useStore';
+import { Spotlight } from '../os/Spotlight';
 
 export const Desktop: React.FC = () => {
   const { system } = useStore();
@@ -43,9 +44,17 @@ export const Desktop: React.FC = () => {
       
       <div className="relative z-10 h-full w-full">
         <MenuBar />
+        
+        {/* Desktop Welcome Text */}
+        <div className="absolute top-24 left-8 z-0 pointer-events-none select-none">
+            <p className="text-lg font-light text-white/80 dark:text-white/80 ml-1 tracking-wide font-sans">welcome to my</p>
+            <h1 className="text-7xl font-serif italic text-white dark:text-white -mt-2 tracking-tight drop-shadow-lg">portfolio.</h1>
+        </div>
+
         <WindowManager />
         <Dock />
         <ControlCenter />
+        <Spotlight />
       </div>
     </div>
   );

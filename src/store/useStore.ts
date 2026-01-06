@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export type AppId = 'about' | 'projects' | 'experience' | 'skills' | 'contact' | 'settings' | 'safari' | 'vscode' | 'terminal';
 
@@ -36,11 +37,13 @@ interface PortfolioStore {
     brightness: number;
     volume: number;
     controlCenterOpen: boolean;
+    spotlightOpen: boolean;
     wallpaper: 'animated' | 'tahoe' | 'sonoma' | 'ventura' | 'monterey';
   };
   toggleSystem: (key: keyof PortfolioStore['system']) => void;
   setSystemValue: (key: 'brightness' | 'volume', value: number) => void;
   setControlCenterOpen: (isOpen: boolean) => void;
+  setSpotlightOpen: (isOpen: boolean) => void;
   setWallpaper: (wallpaper: PortfolioStore['system']['wallpaper']) => void;
 }
 
@@ -142,7 +145,9 @@ const defaultWindows: Record<AppId, WindowState> = {
   },
 };
 
-export const useStore = create<PortfolioStore>((set) => ({
+export const useStore = create<PortfolioStore>()(
+  persist(
+    (set) => ({
   windows: defaultWindows,
   activeAppId: 'about',
   maxZIndex: 1,
@@ -155,6 +160,7 @@ export const useStore = create<PortfolioStore>((set) => ({
       brightness: 100,
       volume: 75,
       controlCenterOpen: false,
+      spotlightOpen: false,
       wallpaper: 'tahoe'
   },
 
@@ -246,7 +252,24 @@ export const useStore = create<PortfolioStore>((set) => ({
       system: { ...state.system, controlCenterOpen: isOpen }
   })),
 
+  setSpotlightOpen: (isOpen) => set((state) => ({
+      system: { ...state.system, spotlightOpen: isOpen }
+  })),
+
   setWallpaper: (wallpaper) => set((state) => ({
       system: { ...state.system, wallpaper }
   })),
-}));
+}),
+    {
+      name: 'portfolio-settings',
+      partialize: (state) => ({ 
+        system: {
+          darkMode: state.system.darkMode,
+          wallpaper: state.system.wallpaper,
+          brightness: state.system.brightness,
+          volume: state.system.volume,
+        }
+      }),
+    }
+  )
+);
