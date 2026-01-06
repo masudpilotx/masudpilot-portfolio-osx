@@ -1,0 +1,7 @@
+
+Converted to Windows ICO formats from SVG icons theme originally created for Linux by vinceliuice
+
+https://github.com/vinceliuice/MacTahoe-icon-theme
+
+
+Use the icons as you see fit in your projects!
