@@ -56,9 +56,11 @@ export const Dock: React.FC = () => {
   const apps: { id: AppId; icon: string; label: string }[] = [
     { id: 'about', icon: '/icons/finder.ico', label: 'Finder' },
     { id: 'safari', icon: '/icons/safari.ico', label: 'Safari' },
-    { id: 'projects', icon: '/icons/vscode.ico', label: 'Projects' },
-    { id: 'experience', icon: '/icons/calendar.ico', label: 'Experience' },
-    { id: 'skills', icon: '/icons/terminal.ico', label: 'Skills' },
+    { id: 'vscode', icon: '/icons/vscode.ico', label: 'VS Code' },
+    { id: 'terminal', icon: 'https://sahilsingh.tech/logo/terminal.png', label: 'Terminal' },
+    { id: 'projects', icon: '/icons/projects.ico', label: 'Projects' },
+    { id: 'experience', icon: '/icons/anythingllm.ico', label: 'Experience' },
+    { id: 'skills', icon: '/icons/typora.png', label: 'Skills' },
     { id: 'contact', icon: '/icons/mail.ico', label: 'Contact' },
     { id: 'settings', icon: '/icons/settings.ico', label: 'Settings' },
   ];

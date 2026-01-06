@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type AppId = 'about' | 'projects' | 'experience' | 'skills' | 'contact' | 'settings' | 'safari';
+export type AppId = 'about' | 'projects' | 'experience' | 'skills' | 'contact' | 'settings' | 'safari' | 'vscode' | 'terminal';
 
 export interface WindowState {
   id: AppId;
@@ -26,19 +26,40 @@ interface PortfolioStore {
   focusApp: (id: AppId) => void;
   updateWindowPosition: (id: AppId, position: { x: number; y: number }) => void;
   updateWindowSize: (id: AppId, size: { width: number; height: number }) => void;
+  
+  // System State
+  system: {
+    wifi: boolean;
+    bluetooth: boolean;
+    airdrop: boolean;
+    darkMode: boolean;
+    brightness: number;
+    volume: number;
+    controlCenterOpen: boolean;
+    wallpaper: 'animated' | 'tahoe' | 'sonoma' | 'ventura' | 'monterey';
+  };
+  toggleSystem: (key: keyof PortfolioStore['system']) => void;
+  setSystemValue: (key: 'brightness' | 'volume', value: number) => void;
+  setControlCenterOpen: (isOpen: boolean) => void;
+  setWallpaper: (wallpaper: PortfolioStore['system']['wallpaper']) => void;
 }
 
 const defaultWindows: Record<AppId, WindowState> = {
   about: {
     id: 'about',
     title: 'About Me',
-    isOpen: true,
+    isOpen: true, // Open About by default
     isMinimized: false,
     isMaximized: false,
     position: { x: 50, y: 50 },
     size: { width: 800, height: 600 },
     zIndex: 1,
   },
+  // ... other windows (restored in memory or assumed unchanged by this partial replace if I'm careful, wait, replacing large chunk safe?)
+  // Actually, I should just target the system object initialization to change default if possible, or the interface.
+  // The tool replaces contiguous blocks. Use safely.
+  // This replacement is for the Interface definition.
+
   projects: {
     id: 'projects',
     title: 'Projects',
@@ -99,12 +120,43 @@ const defaultWindows: Record<AppId, WindowState> = {
     size: { width: 1024, height: 700 }, 
     zIndex: 1,
   },
+  vscode: {
+    id: 'vscode',
+    title: 'Visual Studio Code',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    position: { x: 120, y: 80 },
+    size: { width: 1100, height: 750 }, 
+    zIndex: 1,
+  },
+  terminal: {
+    id: 'terminal',
+    title: 'Terminal',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    position: { x: 150, y: 150 },
+    size: { width: 600, height: 400 },
+    zIndex: 1,
+  },
 };
 
 export const useStore = create<PortfolioStore>((set) => ({
   windows: defaultWindows,
   activeAppId: 'about',
   maxZIndex: 1,
+  
+  system: {
+      wifi: true,
+      bluetooth: true,
+      airdrop: true,
+      darkMode: false,
+      brightness: 100,
+      volume: 75,
+      controlCenterOpen: false,
+      wallpaper: 'tahoe'
+  },
 
   openApp: (id, origin) =>
     set((state) => {
@@ -120,8 +172,6 @@ export const useStore = create<PortfolioStore>((set) => ({
             isOpen: true,
             isMinimized: false,
             zIndex: newZIndex,
-             // Update origin ONLY if provided (e.g. fresh open), otherwise keep existing if re-opening? 
-             // Actually always update it so if window moves to dock then back, it knows where to go.
              origin: origin || state.windows[id].origin, 
           },
         },
@@ -134,13 +184,12 @@ export const useStore = create<PortfolioStore>((set) => ({
         ...state.windows,
         [id]: { ...state.windows[id], isOpen: false },
       },
-      // If closing active app, set active to null or find next highest zIndex?
       activeAppId: state.activeAppId === id ? null : state.activeAppId,
     })),
 
   minimizeApp: (id) =>
     set((state) => ({
-        activeAppId: state.activeAppId === id ? null : state.activeAppId, // Deactivate on minimize
+        activeAppId: state.activeAppId === id ? null : state.activeAppId, 
         windows: {
             ...state.windows,
             [id]: { ...state.windows[id], isMinimized: true },
@@ -157,7 +206,7 @@ export const useStore = create<PortfolioStore>((set) => ({
 
   focusApp: (id) =>
     set((state) => {
-      if (state.activeAppId === id) return {}; // No change needed
+      if (state.activeAppId === id) return {}; 
       const newZIndex = state.maxZIndex + 1;
       return {
         activeAppId: id,
@@ -184,4 +233,20 @@ export const useStore = create<PortfolioStore>((set) => ({
         [id]: { ...state.windows[id], size },
       },
     })),
+    
+  toggleSystem: (key) => set((state) => ({
+      system: { ...state.system, [key]: !state.system[key] }
+  })),
+  
+  setSystemValue: (key, value) => set((state) => ({
+      system: { ...state.system, [key]: value }
+  })),
+
+  setControlCenterOpen: (isOpen) => set((state) => ({
+      system: { ...state.system, controlCenterOpen: isOpen }
+  })),
+
+  setWallpaper: (wallpaper) => set((state) => ({
+      system: { ...state.system, wallpaper }
+  })),
 }));

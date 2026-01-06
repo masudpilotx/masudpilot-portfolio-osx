@@ -54,7 +54,7 @@ export const portfolioData: PortfolioData = {
       description: "Leading the strategic direction for an AI-powered design generation platform that creates professional designs for print-on-demand products.",
       tech: ["Generative AI", "React", "Node.js", "Machine Learning"],
       link: "https://xinva.ai",
-      image: "https://xinva.ai/wp-content/uploads/2023/06/xinva-logo-dark.svg",
+      image: "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://xinva.ai&size=256",
     },
     {
       id: "2",
@@ -62,28 +62,7 @@ export const portfolioData: PortfolioData = {
       description: "Strategic guidance for a UK-registered AI technology company processing 1 trillion+ emails at scale.",
       tech: ["AI", "Big Data", "Email Infrastructure"],
       link: "https://alphasender.com",
-      image: "https://alphasender.com/wp-content/uploads/2023/06/alpha-sender-logo.svg",
-    },
-    {
-      id: "3",
-      title: "Mev & Flashbots",
-      description: "Contributing to blockchain research and development in the Web3 space, focusing on MEV (Maximal Extractable Value) and searcher strategies.",
-      tech: ["Blockchain", "Solidity", "Go", "Web3"],
-      link: "#",
-    },
-     {
-      id: "4",
-      title: "WP Themes",
-      description: "Custom Genesis child themes with advanced customization options and responsive design patterns.",
-      tech: ["WordPress", "PHP", "Genesis Framework", "CSS3"],
-      link: "#",
-    },
-    {
-      id: "5",
-      title: "Memorial Archive",
-      description: "Memorial Archive Of Our Beloved Shaheed Osman Bin Hadi.",
-      tech: ["Web Archive", "History"],
-      link: "https://www.OsmanHadi.info",
+      image: "/logos/alpha_sender.png",
     },
   ],
   experience: [

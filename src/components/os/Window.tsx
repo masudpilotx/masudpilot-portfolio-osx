@@ -74,14 +74,14 @@ export const Window: React.FC<WindowProps> = ({ id, children }) => {
       onPointerDown={handleFocus}
       style={{ zIndex: state.zIndex }}
       className={clsx(
-        "absolute flex flex-col overflow-hidden", // Base positioning
-        !isMaximized && "rounded-xl border border-white/20 shadow-2xl bg-white/80 backdrop-blur-xl", // Standard window style
-        isMaximized && "rounded-none border-none bottom-0 bg-white/95" // Maximized style
+        "absolute flex flex-col overflow-hidden transition-colors duration-300", // Base positioning
+        !isMaximized && "rounded-xl border border-white/20 shadow-2xl bg-white/80 dark:bg-[#1e1e1e]/80 backdrop-blur-xl dark:border-white/10", // Standard window style
+        isMaximized && "rounded-none border-none bottom-0 bg-white/95 dark:bg-[#1e1e1e]/95" // Maximized style
       )}
     >
       {/* Title Bar */}
       <div 
-        className="h-10 bg-gradient-to-b from-white/50 to-white/20 border-b border-black/5 flex items-center px-4 space-x-4 cursor-default select-none flex-shrink-0"
+        className="h-10 bg-gradient-to-b from-white/50 to-white/20 dark:from-white/10 dark:to-white/5 border-b border-black/5 dark:border-white/5 flex items-center px-4 space-x-4 cursor-default select-none flex-shrink-0"
         onDoubleClick={() => toggleMaximizeApp(id)}
       >
         <div className="flex space-x-2 group">
@@ -108,14 +108,14 @@ export const Window: React.FC<WindowProps> = ({ id, children }) => {
              <Maximize2 size={8} className="text-black/50 opacity-0 group-hover:opacity-100" />
           </button>
         </div>
-        <div className="flex-1 text-center font-medium text-sm text-gray-700">
+        <div className="flex-1 text-center font-medium text-sm text-gray-700 dark:text-gray-300">
             {state.title}
         </div>
         <div className="w-14"></div> {/* Spacer for balance */}
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-auto p-4 custom-scrollbar bg-white/50">
+      <div className="flex-1 overflow-auto p-4 custom-scrollbar bg-white/50 dark:bg-[#1c1c1c]/50">
         {children}
       </div>
     </motion.div>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useStore, AppId } from '../../store/useStore';
 import { Window } from './Window';
-import { AboutApp, ProjectsApp, ExperienceApp, SkillsApp, ContactApp, SettingsApp } from '../apps/Apps';
+import { AboutApp, ProjectsApp, ExperienceApp, SkillsApp, ContactApp, SettingsApp, VSCodeApp } from '../apps/Apps';
 import { SafariApp } from '../apps/Safari';
+import { Terminal } from '../apps/Terminal';
 
 const apps: Record<AppId, React.FC> = {
   about: AboutApp,
@@ -12,6 +13,8 @@ const apps: Record<AppId, React.FC> = {
   contact: ContactApp,
   settings: SettingsApp,
   safari: SafariApp,
+  vscode: VSCodeApp,
+  terminal: Terminal,
 };
 
 export const WindowManager: React.FC = () => {
