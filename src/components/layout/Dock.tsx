@@ -62,6 +62,7 @@ export const Dock: React.FC = () => {
     { id: 'experience', icon: '/icons/anythingllm.ico', label: 'Experience' },
     { id: 'skills', icon: '/icons/typora.png', label: 'Skills' },
     { id: 'contact', icon: '/icons/mail.ico', label: 'Contact' },
+    { id: 'games', icon: '/icons/games.png', label: 'Games' },
     { id: 'settings', icon: '/icons/settings.ico', label: 'Settings' },
   ];
 
