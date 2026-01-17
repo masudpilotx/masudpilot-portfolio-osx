@@ -84,7 +84,30 @@ npm run build
 
 The output will be in the `dist` directory, ready to be deployed to Vercel, Netlify, or GitHub Pages.
 
-## 📁 Project Structure
+## � Deployment
+
+### GitHub Pages (Automated)
+
+This project is configured to deploy to GitHub Pages easily.
+
+1.  **Configure `vite.config.ts`**:
+
+    - If deploying to a user site (e.g., `username.github.io`), set `base: "/"`.
+    - If deploying to a project site (e.g., `username.github.io/repo`), set `base: "/repo-name/"`.
+
+2.  **Deploy**:
+    Run the following command to build and deploy to the `gh-pages` branch:
+
+    ```bash
+    npm run deploy
+    ```
+
+3.  **Enable GitHub Pages**:
+    - Go to Repository Settings -> Pages.
+    - Select Source: **Deploy from a branch**.
+    - Select Branch: **gh-pages**.
+
+## �📁 Project Structure
 
 ```
 src/
