@@ -1,0 +1,8 @@
+2026-01-17T21:23:29.0370000Z Evaluating tests.if
+2026-01-17T21:23:29.0370000Z Evaluating: success()
+2026-01-17T21:23:29.0370000Z Result: true
+2026-01-17T21:23:29.5080000Z Job is waiting for a hosted runner to come online.
+2026-01-17T21:23:29.5090000Z Job is about to start running on the hosted runner: GitHub Actions 1000068638
+2026-01-17T21:23:29.5060000Z Requested labels: ubuntu-latest
+2026-01-17T21:23:29.5060000Z Job defined at: is-a-dev/register/.github/workflows/ci.yml@refs/pull/31682/merge
+2026-01-17T21:23:29.5060000Z Waiting for a runner to pick up this job...

@@ -1,0 +1,92 @@
+﻿2026-01-17T21:23:32.8972401Z ##[group]Build container for action use: '/home/runner/work/_actions/is-a-dev/dnscontrol-action/main/Dockerfile'.
+2026-01-17T21:23:32.9022365Z ##[command]/usr/bin/docker build -t faf0f9:1db38088839f424a8807942f9c1f1d9c -f "/home/runner/work/_actions/is-a-dev/dnscontrol-action/main/Dockerfile" "/home/runner/work/_actions/is-a-dev/dnscontrol-action/main"
+2026-01-17T21:23:33.6640429Z #0 building with "default" instance using docker driver
+2026-01-17T21:23:33.6642008Z 
+2026-01-17T21:23:33.6642394Z #1 [internal] load build definition from Dockerfile
+2026-01-17T21:23:33.6643379Z #1 transferring dockerfile: 1.12kB done
+2026-01-17T21:23:33.6644153Z #1 DONE 0.0s
+2026-01-17T21:23:33.6644489Z 
+2026-01-17T21:23:33.6644911Z #2 [internal] load metadata for docker.io/library/alpine:3
+2026-01-17T21:23:33.8675651Z #2 ...
+2026-01-17T21:23:33.8676230Z 
+2026-01-17T21:23:33.8676934Z #3 [auth] library/alpine:pull token for registry-1.docker.io
+2026-01-17T21:23:33.8678063Z #3 DONE 0.0s
+2026-01-17T21:23:34.0171176Z 
+2026-01-17T21:23:34.0171809Z #2 [internal] load metadata for docker.io/library/alpine:3
+2026-01-17T21:23:34.4543053Z #2 DONE 0.9s
+2026-01-17T21:23:34.5759901Z 
+2026-01-17T21:23:34.5760162Z #4 [internal] load .dockerignore
+2026-01-17T21:23:34.5761313Z #4 transferring context: 2B done
+2026-01-17T21:23:34.5762016Z #4 DONE 0.0s
+2026-01-17T21:23:34.5762524Z 
+2026-01-17T21:23:34.5762783Z #5 [internal] load build context
+2026-01-17T21:23:34.5763254Z #5 transferring context: 1.33kB done
+2026-01-17T21:23:34.5763716Z #5 DONE 0.0s
+2026-01-17T21:23:34.5763910Z 
+2026-01-17T21:23:34.5764702Z #6 [1/8] FROM docker.io/library/alpine:3@sha256:865b95f46d98cf867a156fe4a135ad3fe50d2056aa3f25ed31662dff6da4eb62
+2026-01-17T21:23:34.5765667Z #6 resolve docker.io/library/alpine:3@sha256:865b95f46d98cf867a156fe4a135ad3fe50d2056aa3f25ed31662dff6da4eb62 done
+2026-01-17T21:23:34.5766537Z #6 sha256:865b95f46d98cf867a156fe4a135ad3fe50d2056aa3f25ed31662dff6da4eb62 9.22kB / 9.22kB done
+2026-01-17T21:23:34.5767332Z #6 sha256:1882fa4569e0c591ea092d3766c4893e19b8901a8e649de7067188aba3cc0679 1.02kB / 1.02kB done
+2026-01-17T21:23:34.5768110Z #6 sha256:e7b39c54cdeca0d2aae83114bb605753a5f5bc511fe8be7590e38f6d9f915dad 611B / 611B done
+2026-01-17T21:23:34.5768970Z #6 sha256:1074353eec0db2c1d81d5af2671e56e00cf5738486f5762609ea33d606f88612 0B / 3.86MB 0.1s
+2026-01-17T21:23:34.7541470Z #6 sha256:1074353eec0db2c1d81d5af2671e56e00cf5738486f5762609ea33d606f88612 3.86MB / 3.86MB 0.2s done
+2026-01-17T21:23:34.7542742Z #6 extracting sha256:1074353eec0db2c1d81d5af2671e56e00cf5738486f5762609ea33d606f88612 0.1s done
+2026-01-17T21:23:34.9320995Z #6 DONE 0.3s
+2026-01-17T21:23:34.9321313Z 
+2026-01-17T21:23:34.9321807Z #7 [2/8] RUN apk -U --no-cache upgrade &&     apk add --no-cache bash ca-certificates curl libc6-compat tar
+2026-01-17T21:23:35.5305792Z #7 0.749 OK: 8222 KiB in 16 packages
+2026-01-17T21:23:35.9143115Z #7 1.133 ( 1/20) Installing ncurses-terminfo-base (6.5_p20251123-r0)
+2026-01-17T21:23:36.0195144Z #7 1.150 ( 2/20) Installing libncursesw (6.5_p20251123-r0)
+2026-01-17T21:23:36.0195797Z #7 1.165 ( 3/20) Installing readline (8.3.1-r0)
+2026-01-17T21:23:36.0196344Z #7 1.180 ( 4/20) Installing bash (5.3.3-r1)
+2026-01-17T21:23:36.0196813Z #7 1.204   Executing bash-5.3.3-r1.post-install
+2026-01-17T21:23:36.0197346Z #7 1.208 ( 5/20) Installing ca-certificates (20251003-r0)
+2026-01-17T21:23:36.0197865Z #7 1.239 ( 6/20) Installing brotli-libs (1.2.0-r0)
+2026-01-17T21:23:36.1265442Z #7 1.257 ( 7/20) Installing c-ares (1.34.6-r0)
+2026-01-17T21:23:36.1266407Z #7 1.271 ( 8/20) Installing libunistring (1.4.1-r0)
+2026-01-17T21:23:36.1267386Z #7 1.293 ( 9/20) Installing libidn2 (2.3.8-r0)
+2026-01-17T21:23:36.1268118Z #7 1.307 (10/20) Installing nghttp2-libs (1.68.0-r0)
+2026-01-17T21:23:36.1268800Z #7 1.320 (11/20) Installing nghttp3 (1.13.1-r0)
+2026-01-17T21:23:36.1269424Z #7 1.333 (12/20) Installing libpsl (0.21.5-r3)
+2026-01-17T21:23:36.1270059Z #7 1.346 (13/20) Installing zstd-libs (1.5.7-r2)
+2026-01-17T21:23:36.2419072Z #7 1.363 (14/20) Installing libcurl (8.17.0-r1)
+2026-01-17T21:23:36.2420015Z #7 1.380 (15/20) Installing curl (8.17.0-r1)
+2026-01-17T21:23:36.2420483Z #7 1.395 (16/20) Installing musl-obstack (1.2.3-r2)
+2026-01-17T21:23:36.2421143Z #7 1.407 (17/20) Installing libucontext (1.3.3-r0)
+2026-01-17T21:23:36.2421606Z #7 1.419 (18/20) Installing gcompat (1.1.0-r4)
+2026-01-17T21:23:36.2422042Z #7 1.432 (19/20) Installing acl-libs (2.3.2-r1)
+2026-01-17T21:23:36.2422460Z #7 1.445 (20/20) Installing tar (1.35-r4)
+2026-01-17T21:23:36.2422870Z #7 1.461 Executing busybox-1.37.0-r30.trigger
+2026-01-17T21:23:36.4385907Z #7 1.466 Executing ca-certificates-20251003-r0.trigger
+2026-01-17T21:23:36.4386481Z #7 1.507 OK: 16.0 MiB in 36 packages
+2026-01-17T21:23:37.0573875Z #7 DONE 2.3s
+2026-01-17T21:23:37.1760515Z 
+2026-01-17T21:23:37.1762069Z #8 [3/8] RUN  addgroup -S dnscontrol-user && adduser -S dnscontrol-user -G dnscontrol-user --disabled-password
+2026-01-17T21:23:37.1768013Z #8 DONE 0.1s
+2026-01-17T21:23:37.3281037Z 
+2026-01-17T21:23:37.3282290Z #9 [4/8] RUN curl -sL "https://github.com/StackExchange/dnscontrol/releases/download/v4.14.0/dnscontrol_4.14.0_linux_amd64.tar.gz"     -o dnscontrol &&     tar xvf dnscontrol
+2026-01-17T21:23:37.6665421Z #9 0.489 LICENSE
+2026-01-17T21:23:37.8168812Z #9 0.489 README.md
+2026-01-17T21:23:37.8169198Z #9 0.490 dnscontrol
+2026-01-17T21:23:38.0436885Z #9 DONE 0.9s
+2026-01-17T21:23:38.1950348Z 
+2026-01-17T21:23:38.1951642Z #10 [5/8] RUN chown dnscontrol-user:dnscontrol-user  dnscontrol
+2026-01-17T21:23:38.2049955Z #10 DONE 0.2s
+2026-01-17T21:23:38.3561355Z 
+2026-01-17T21:23:38.3562214Z #11 [6/8] RUN chmod +x dnscontrol &&     chmod 755 dnscontrol &&     cp dnscontrol /usr/local/bin/dnscontrol
+2026-01-17T21:23:38.4556098Z #11 DONE 0.2s
+2026-01-17T21:23:38.5704474Z 
+2026-01-17T21:23:38.5705074Z #12 [7/8] RUN ["dnscontrol", "version"]
+2026-01-17T21:23:38.5705605Z #12 0.114 DNSControl version 4.14.0
+2026-01-17T21:23:38.7506554Z #12 DONE 0.1s
+2026-01-17T21:23:38.7507140Z 
+2026-01-17T21:23:38.7507530Z #13 [8/8] COPY entrypoint.sh bin/filter-preview-output.sh /
+2026-01-17T21:23:38.7510291Z #13 DONE 0.0s
+2026-01-17T21:23:38.7510533Z 
+2026-01-17T21:23:38.7510667Z #14 exporting to image
+2026-01-17T21:23:38.7511175Z #14 exporting layers
+2026-01-17T21:23:39.0239900Z #14 exporting layers 0.4s done
+2026-01-17T21:23:39.0499158Z #14 writing image sha256:f3d68e775f436fae0fab75cad22440a5c688aa3c4771cddee63ab8d7ba6adc22 done
+2026-01-17T21:23:39.0500593Z #14 naming to docker.io/library/faf0f9:1db38088839f424a8807942f9c1f1d9c done
+2026-01-17T21:23:39.0546320Z #14 DONE 0.4s
+2026-01-17T21:23:39.0553953Z ##[endgroup]
