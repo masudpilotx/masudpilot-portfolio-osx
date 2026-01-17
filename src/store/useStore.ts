@@ -51,7 +51,7 @@ const defaultWindows: Record<AppId, WindowState> = {
   about: {
     id: 'about',
     title: 'About Me',
-    isOpen: true, // Open About by default
+    isOpen: false, // Don't open About by default
     isMinimized: false,
     isMaximized: false,
     position: { x: 50, y: 50 },
@@ -169,7 +169,7 @@ export const useStore = create<PortfolioStore>()(
   persist(
     (set) => ({
   windows: defaultWindows,
-  activeAppId: 'about',
+  activeAppId: null,
   maxZIndex: 1,
   
   system: {
