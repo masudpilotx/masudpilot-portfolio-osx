@@ -13,7 +13,7 @@ export const AboutApp: React.FC = () => {
           <img 
             src={bio.avatar} 
             alt={bio.name} 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[50%_25%]"
             onError={(e) => { (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Masud&background=random'; }}
           />
         </div>

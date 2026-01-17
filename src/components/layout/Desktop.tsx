@@ -2,32 +2,85 @@ import React, { useState } from 'react';
 import { MenuBar } from './MenuBar';
 import { Dock } from './Dock';
 import { WindowManager } from '../os/WindowManager';
-// import { AnimatedBackground } from '../ui/AnimatedBackground';
 import { ControlCenter } from '../os/ControlCenter';
 import { useStore } from '../../store/useStore';
 import { Spotlight } from '../os/Spotlight';
 import { X } from 'lucide-react';
 
-// Desktop Icon Component
+
+// Desktop Icon Component - Clean macOS style
 const DesktopIcon: React.FC<{ 
   icon: string; 
   label: string; 
   onClick: () => void;
-  className?: string;
-}> = ({ icon, label, onClick, className = '' }) => (
+}> = ({ icon, label, onClick }) => (
   <div 
-    className={`flex flex-col items-center cursor-pointer group w-20 ${className}`}
+    className="flex flex-col items-center cursor-pointer group w-16"
     onClick={onClick}
     onDoubleClick={onClick}
   >
     <img 
       src={icon} 
       alt={label} 
-      className="w-14 h-14 object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-200 group-active:scale-95" 
+      className="w-12 h-12 object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-200 group-active:scale-95" 
     />
-    <span className="text-[11px] text-white mt-1.5 text-center font-medium drop-shadow-md px-1.5 py-0.5 rounded bg-black/30 backdrop-blur-sm max-w-full truncate">
+    <span className="text-[11px] text-white mt-1 text-center font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] leading-tight">
       {label}
     </span>
+  </div>
+);
+
+// macOS-style Confirmation Dialog
+const ConfirmDialog: React.FC<{ 
+  onConfirm: () => void; 
+  onCancel: () => void;
+}> = ({ onConfirm, onCancel }) => (
+  <div className="fixed inset-0 z-[999] bg-black/40 backdrop-blur-md flex items-center justify-center animate-in fade-in zoom-in-95 duration-200">
+    {/* macOS Alert Window */}
+    <div className="bg-white/95 dark:bg-[#323232]/95 backdrop-blur-2xl rounded-2xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] w-[320px] overflow-hidden border border-white/20">
+      {/* Window Header with Traffic Lights */}
+      <div className="h-8 bg-gradient-to-b from-white/10 to-transparent flex items-center px-3 gap-2">
+        <div className="flex gap-[6px]">
+          <button onClick={onCancel} className="w-3 h-3 rounded-full bg-[#ff5f57] hover:bg-[#ff5f57]/80 transition-colors shadow-inner" />
+          <div className="w-3 h-3 rounded-full bg-[#febc2e] shadow-inner" />
+          <div className="w-3 h-3 rounded-full bg-[#28c840] shadow-inner" />
+        </div>
+      </div>
+      
+      {/* Content */}
+      <div className="px-6 pb-6 pt-2 text-center">
+        {/* Icon */}
+        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg">
+          <span className="text-3xl">⚠️</span>
+        </div>
+        
+        {/* Title */}
+        <h2 className="text-[15px] font-semibold text-gray-900 dark:text-white mb-1">
+          Are you sure about this?
+        </h2>
+        
+        {/* Description */}
+        <p className="text-[13px] text-gray-500 dark:text-gray-400 mb-5 leading-relaxed">
+          I warned you... Once you click, there's no going back.
+        </p>
+        
+        {/* Buttons - macOS Style */}
+        <div className="flex flex-col gap-2">
+          <button
+            onClick={onConfirm}
+            className="w-full px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium text-[13px] shadow-sm transition-all active:scale-[0.98]"
+          >
+            Yes, I'm brave! 💀
+          </button>
+          <button
+            onClick={onCancel}
+            className="w-full px-4 py-2 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/15 text-gray-700 dark:text-gray-300 rounded-lg font-medium text-[13px] transition-all active:scale-[0.98]"
+          >
+            Nevermind, take me back
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 );
 
@@ -56,6 +109,7 @@ const RickrollModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
 export const Desktop: React.FC = () => {
   const { system, openApp } = useStore();
   const [showRickroll, setShowRickroll] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   // Handle Dark Mode Class
   React.useEffect(() => {
@@ -76,6 +130,15 @@ export const Desktop: React.FC = () => {
     }
   };
 
+  const handleMysteryClick = () => {
+    setShowConfirm(true);
+  };
+
+  const handleConfirmYes = () => {
+    setShowConfirm(false);
+    setShowRickroll(true);
+  };
+
   return (
     <div 
         className="h-screen w-screen overflow-hidden relative select-none cursor-default bg-cover bg-center transition-all duration-700 bg-black"
@@ -87,6 +150,14 @@ export const Desktop: React.FC = () => {
         style={{ opacity: (100 - system.brightness) / 100 * 0.8 }} 
       />
 
+      {/* Confirmation Dialog */}
+      {showConfirm && (
+        <ConfirmDialog 
+          onConfirm={handleConfirmYes} 
+          onCancel={() => setShowConfirm(false)} 
+        />
+      )}
+
       {/* Rickroll Modal */}
       {showRickroll && <RickrollModal onClose={() => setShowRickroll(false)} />}
       
@@ -95,33 +166,33 @@ export const Desktop: React.FC = () => {
         
         {/* Desktop Welcome Text */}
         <div className="absolute top-24 left-8 z-0 pointer-events-none select-none">
-            <p className="text-lg font-light text-white/80 dark:text-white/80 ml-1 tracking-wide font-sans">welcome to my</p>
-            <h1 className="text-7xl font-serif italic text-white dark:text-white -mt-2 tracking-tight drop-shadow-lg">portfolio.</h1>
+            <p className="text-4xl text-white/90 tracking-wide drop-shadow-md" style={{ fontFamily: 'Caveat, cursive' }}>
+              Welcome to my corner
+            </p>
+            <p className="text-4xl text-white/90 tracking-wide -mt-1 drop-shadow-md" style={{ fontFamily: 'Caveat, cursive' }}>
+              on the internet :)
+            </p>
         </div>
 
-        {/* Desktop Icons - Right Side */}
-        <div className="absolute top-12 right-6 z-0 flex flex-col gap-3 items-center">
-          <DesktopIcon 
-            icon="/icons/finder.ico" 
-            label="About Me" 
-            onClick={() => openApp('about')} 
-          />
-          <DesktopIcon 
-            icon="/icons/contacts.png" 
-            label="Contact" 
-            onClick={() => openApp('contact')} 
-          />
-          <DesktopIcon 
-            icon="/icons/github.ico" 
-            label="GitHub" 
-            onClick={() => window.open('https://github.com/masudpilot', '_blank')} 
-          />
-          <DesktopIcon 
-            icon="https://cdn-icons-png.flaticon.com/512/1182/1182684.png" 
-            label="don't click me 🙂" 
-            onClick={() => setShowRickroll(true)} 
-            className="mt-4 opacity-80 hover:opacity-100"
-          />
+
+
+        {/* Desktop Icons - Positioned to the right, responsive */}
+        <div className="absolute top-24 sm:top-32 md:top-[180px] right-4 sm:right-8 md:right-12 z-0 flex flex-col gap-4 sm:gap-6 items-center">
+            <DesktopIcon 
+              icon="/icons/mail.ico" 
+              label="Contact" 
+              onClick={() => openApp('contact')} 
+            />
+            <DesktopIcon 
+              icon="/icons/github.ico" 
+              label="GitHub" 
+              onClick={() => window.open('https://github.com/masudpilotx', '_blank')} 
+            />
+            <DesktopIcon 
+              icon="/icons/video-television.ico" 
+              label="don't click 🙂" 
+              onClick={handleMysteryClick} 
+            />
         </div>
 
         <WindowManager />

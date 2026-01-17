@@ -5,6 +5,7 @@ import { AboutApp, ProjectsApp, ExperienceApp, SkillsApp, ContactApp, SettingsAp
 import { SafariApp } from '../apps/Safari';
 import { Terminal } from '../apps/Terminal';
 import { GamesApp } from '../apps/Games';
+import { DownloadsApp } from '../apps/Downloads';
 
 const apps: Record<AppId, React.FC> = {
   about: AboutApp,
@@ -17,6 +18,7 @@ const apps: Record<AppId, React.FC> = {
   vscode: VSCodeApp,
   terminal: Terminal,
   games: GamesApp,
+  downloads: DownloadsApp,
 };
 
 export const WindowManager: React.FC = () => {

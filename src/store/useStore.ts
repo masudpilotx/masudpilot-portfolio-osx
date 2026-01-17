@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type AppId = 'about' | 'projects' | 'experience' | 'skills' | 'contact' | 'settings' | 'safari' | 'vscode' | 'terminal' | 'games';
+export type AppId = 'about' | 'projects' | 'experience' | 'skills' | 'contact' | 'settings' | 'safari' | 'vscode' | 'terminal' | 'games' | 'downloads';
 
 export interface WindowState {
   id: AppId;
@@ -151,6 +151,16 @@ const defaultWindows: Record<AppId, WindowState> = {
     isMaximized: false,
     position: { x: 100, y: 80 },
     size: { width: 900, height: 650 },
+    zIndex: 1,
+  },
+  downloads: {
+    id: 'downloads',
+    title: 'Downloads',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    position: { x: 200, y: 200 },
+    size: { width: 400, height: 500 },
     zIndex: 1,
   },
 };
