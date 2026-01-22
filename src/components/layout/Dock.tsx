@@ -89,14 +89,14 @@ export const Dock: React.FC = () => {
 
   return (
     <div 
-      className="fixed bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[95vw] sm:max-w-fit flex justify-center"
+      className="fixed bottom-6 sm:bottom-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[85vw] sm:max-w-fit flex justify-center"
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
     >
       {/* Dock container with relative positioning */}
-      <div className="relative">
+      <div className="relative w-full sm:w-auto">
         {/* Background layer - scales with content */}
-        <div className="absolute bottom-0 left-0 right-0 h-[60px] sm:h-[65px] bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl mx-1 sm:mx-0 shadow-2xl" />
+        <div className="absolute bottom-0 left-0 right-0 h-[65px] sm:h-[65px] bg-black/20 dark:bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl shadow-2xl" />
         
         {/* Icons container - scrollable on mobile */}
         <div className="relative flex items-end px-3 sm:px-3 pb-2 sm:pb-2 overflow-x-auto overflow-y-hidden no-scrollbar w-full sm:w-auto snap-x snap-mandatory">
