@@ -17,18 +17,19 @@ const DockItem: React.FC<DockItemProps> = ({ id, icon: Icon, label, isOpen, mous
     return val - bounds.x - bounds.width / 2;
   });
 
-  // Responsive sizes: smaller on mobile
+  // Responsive sizes: smaller on mobile to fit all icons without scrolling
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
-  const baseSize = isMobile ? 32 : 45;
-  const hoverSize = isMobile ? 48 : 90;
+  // Mobile needs to fit ~13 items in ~350px. 350/13 = ~26px.
+  const baseSize = isMobile ? 22 : 45;
+  const hoverSize = isMobile ? 32 : 90;
   const widthSync = useTransform(distance, [-150, 0, 150], [baseSize, hoverSize, baseSize]);
-  const width = useSpring(widthSync, { mass: 0.1, stiffness: 350, damping: 20 }); // Snappier spring
+  const width = useSpring(widthSync, { mass: 0.1, stiffness: 350, damping: 20 });
 
   return (
     <motion.div
       id={`dock-item-${id}`}
       style={{ width }}
-      className="aspect-square flex flex-col items-center justify-end relative group cursor-pointer mb-1 mx-1" // Reduced mb-3 to mb-1 for better alignment
+      className="aspect-square flex flex-col items-center justify-end relative group cursor-pointer mb-1 mx-[1px] sm:mx-1"
       onClick={onClick}
     >
         {/* No background container - pure icon float */}
@@ -89,52 +90,47 @@ export const Dock: React.FC = () => {
 
   return (
     <div 
-      className="fixed bottom-6 sm:bottom-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[85vw] sm:max-w-fit flex justify-center"
+      className="fixed bottom-6 sm:bottom-4 left-1/2 -translate-x-1/2 z-50 w-full sm:max-w-fit flex justify-center"
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
     >
       {/* Dock container with relative positioning */}
-      <div className="relative w-full sm:w-auto">
+      <div className="relative w-auto">
         {/* Background layer - scales with content */}
-        <div className="absolute bottom-0 left-0 right-0 h-[50px] sm:h-[65px] bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-2xl" />
+        <div className="absolute bottom-0 left-0 right-0 h-[45px] sm:h-[65px] bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-2xl" />
         
-        {/* Icons container - scrollable on mobile */}
-        <div className="relative flex items-end px-4 sm:px-3 pb-2 sm:pb-2 overflow-x-auto overflow-y-hidden no-scrollbar w-full sm:w-auto snap-x snap-mandatory">
+        {/* Icons container - centered, no scroll */}
+        <div className="relative flex items-end px-2 sm:px-3 pb-2 sm:pb-2 w-auto justify-center">
           {apps.map((app) => (
-            <div key={app.id} className="snap-center shrink-0">
-                <DockItem
+            <DockItem
+                key={app.id}
                 {...app}
                 isOpen={windows[app.id].isOpen}
                 mouseX={mouseX}
                 onClick={() => handleAppClick(app.id)}
-                />
-            </div>
+            />
           ))}
 
           {/* Separator */}
-          <div className="h-8 sm:h-10 w-[1px] bg-white/20 mx-2 sm:mx-2 mb-2 sm:mb-2 self-end flex-shrink-0 snap-center" />
+          <div className="h-6 sm:h-10 w-[1px] bg-white/20 mx-1 sm:mx-2 mb-2 sm:mb-2 self-end flex-shrink-0" />
 
           {/* Placeholder Folders (Downloads, Trash) */}
-          <div className="snap-center shrink-0">
-            <DockItem
-                id={'downloads' as any}
-                icon="/icons/folder.svg"
-                label="Downloads"
-                isOpen={windows['downloads']?.isOpen || false}
-                mouseX={mouseX}
-                onClick={() => handleAppClick('downloads')}
-            />
-          </div>
-          <div className="snap-center shrink-0">
-            <DockItem
-                id={'trash' as any}
-                icon="/icons/trash.svg"
-                label="Trash"
-                isOpen={false}
-                mouseX={mouseX}
-                onClick={() => {}}
-            />
-          </div>
+          <DockItem
+              id={'downloads' as any}
+              icon="/icons/folder.svg"
+              label="Downloads"
+              isOpen={windows['downloads']?.isOpen || false}
+              mouseX={mouseX}
+              onClick={() => handleAppClick('downloads')}
+          />
+          <DockItem
+              id={'trash' as any}
+              icon="/icons/trash.svg"
+              label="Trash"
+              isOpen={false}
+              mouseX={mouseX}
+              onClick={() => {}}
+          />
         </div>
       </div>
     </div>
