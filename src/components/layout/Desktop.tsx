@@ -162,9 +162,14 @@ export const Desktop: React.FC = () => {
 
   return (
     <div 
-        className={`h-screen w-screen overflow-hidden relative select-none cursor-default bg-cover bg-center transition-all duration-500 bg-[#1d1d1f] ${wallpaperLoaded ? 'opacity-100' : 'opacity-0'}`}
-        style={{ backgroundImage: getWallpaper() }}
+        className="h-screen w-screen overflow-hidden relative select-none cursor-default bg-[#1d1d1f]"
     >
+      {/* Wallpaper Layer - fades in when loaded */}
+      <div 
+        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${wallpaperLoaded ? 'opacity-100' : 'opacity-0'}`}
+        style={{ backgroundImage: getWallpaper() }}
+      />
+      
       {/* Brightness Overlay */}
       <div 
         className="fixed inset-0 z-[100] pointer-events-none bg-black transition-opacity duration-300"
