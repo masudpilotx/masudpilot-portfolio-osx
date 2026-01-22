@@ -1,8 +1,16 @@
-# MacOS Portfolio 🍎
+# 🍎 macOS Portfolio | React Developer Portfolio Template
 
-A stunning, interactive portfolio website built with React and TypeScript that replicates the macOS desktop experience on the web.
+[![React](https://img.shields.io/badge/React-18.3-61DAFB?style=flat&logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-FF0055?style=flat&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-![Portfolio Preview](public/screenshots/preview.png)
+> **A stunning, pixel-perfect macOS-style portfolio website** built with React, TypeScript, and Framer Motion. Perfect for developers, designers, and creatives who want a unique portfolio that stands out.
+
+🔗 **[Live Demo](https://masudpilotx.github.io/masudpilot-portfolio-osx)** | 📦 **[Use This Template](#-getting-started)**
+
+![macOS Portfolio Preview](public/screenshots/preview.png)
 
 ## ✨ Features
 
@@ -91,7 +99,6 @@ The output will be in the `dist` directory, ready to be deployed to Vercel, Netl
 This project is configured to deploy to GitHub Pages easily.
 
 1.  **Configure `vite.config.ts`**:
-
     - If deploying to a user site (e.g., `username.github.io`), set `base: "/"`.
     - If deploying to a project site (e.g., `username.github.io/repo`), set `base: "/repo-name/"`.
 

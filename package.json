@@ -1,7 +1,24 @@
 {
-  "name": "temp_scaffold",
+  "name": "masudpilot-portfolio-osx",
+  "description": "A stunning macOS-style portfolio website built with React, TypeScript & Framer Motion",
+  "keywords": [
+    "portfolio",
+    "react",
+    "typescript",
+    "macos",
+    "framer-motion",
+    "tailwindcss",
+    "developer-portfolio",
+    "vite"
+  ],
+  "author": "Masud Pilot <https://github.com/masudpilotx>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/masudpilotx/masudpilot-portfolio-osx.git"
+  },
+  "homepage": "https://masudpilotx.github.io/masudpilot-portfolio-osx",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
