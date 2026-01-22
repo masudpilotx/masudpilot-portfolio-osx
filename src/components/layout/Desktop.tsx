@@ -110,7 +110,6 @@ export const Desktop: React.FC = () => {
   const { system, openApp } = useStore();
   const [showRickroll, setShowRickroll] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [wallpaperLoaded, setWallpaperLoaded] = useState(false);
 
   // Handle Dark Mode Class
   React.useEffect(() => {
@@ -131,26 +130,6 @@ export const Desktop: React.FC = () => {
     }
   };
 
-  // Preload wallpaper image and fade in when ready
-  React.useEffect(() => {
-    setWallpaperLoaded(false);
-    const wallpaperUrl = getWallpaper();
-    if (wallpaperUrl === 'none') {
-      setWallpaperLoaded(true);
-      return;
-    }
-    // Extract URL from css url() format
-    const urlMatch = wallpaperUrl.match(/url\(['"]?([^'"]+)['"]?\)/);
-    if (urlMatch && urlMatch[1]) {
-      const img = new Image();
-      img.onload = () => setWallpaperLoaded(true);
-      img.onerror = () => setWallpaperLoaded(true); // Show anyway on error
-      img.src = urlMatch[1];
-    } else {
-      setWallpaperLoaded(true);
-    }
-  }, [system.wallpaper, system.darkMode]);
-
   const handleMysteryClick = () => {
     setShowConfirm(true);
   };
@@ -162,14 +141,9 @@ export const Desktop: React.FC = () => {
 
   return (
     <div 
-        className="h-screen w-screen overflow-hidden relative select-none cursor-default bg-[#1d1d1f]"
-    >
-      {/* Wallpaper Layer - fades in when loaded */}
-      <div 
-        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${wallpaperLoaded ? 'opacity-100' : 'opacity-0'}`}
+        className="h-screen w-screen overflow-hidden relative select-none cursor-default bg-cover bg-center transition-all duration-700 bg-black"
         style={{ backgroundImage: getWallpaper() }}
-      />
-      
+    >
       {/* Brightness Overlay */}
       <div 
         className="fixed inset-0 z-[100] pointer-events-none bg-black transition-opacity duration-300"
