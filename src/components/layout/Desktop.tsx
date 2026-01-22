@@ -165,11 +165,11 @@ export const Desktop: React.FC = () => {
         <MenuBar />
         
         {/* Desktop Welcome Text */}
-        <div className="absolute top-24 left-8 z-0 pointer-events-none select-none">
-            <p className="text-4xl text-white/90 tracking-wide drop-shadow-md" style={{ fontFamily: 'Caveat, cursive' }}>
+        <div className="absolute top-16 left-4 sm:top-24 sm:left-8 z-0 pointer-events-none select-none">
+            <p className="text-2xl sm:text-4xl text-white/90 tracking-wide drop-shadow-md" style={{ fontFamily: 'Caveat, cursive' }}>
               Welcome to my corner
             </p>
-            <p className="text-4xl text-white/90 tracking-wide -mt-1 drop-shadow-md" style={{ fontFamily: 'Caveat, cursive' }}>
+            <p className="text-2xl sm:text-4xl text-white/90 tracking-wide -mt-1 drop-shadow-md" style={{ fontFamily: 'Caveat, cursive' }}>
               on the internet :)
             </p>
         </div>

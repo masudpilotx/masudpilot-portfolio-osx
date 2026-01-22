@@ -99,7 +99,7 @@ export const Dock: React.FC = () => {
         <div className="absolute bottom-0 left-0 right-0 h-[50px] sm:h-[65px] bg-white/10 backdrop-blur-2xl border border-white/20 rounded-xl sm:rounded-2xl shadow-2xl" />
         
         {/* Icons container - can overflow above background */}
-        <div className="relative flex items-end px-2 sm:px-3 pb-1 sm:pb-2">
+        <div className="relative flex items-end px-2 sm:px-3 pb-1 sm:pb-2 overflow-x-auto overflow-y-hidden max-w-[100vw] no-scrollbar">
           {apps.map((app) => (
             <DockItem
               key={app.id}
