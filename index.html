@@ -59,8 +59,12 @@
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/assets/index-C34MGuTB.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DyiOdZ6M.css">
+
+    <!-- Preload default wallpapers for faster initial render -->
+    <link rel="preload" as="image" href="/wallpapers/tahoe-light.png" />
+    <link rel="preload" as="image" href="/wallpapers/tahoe-dark.png" />
+    <script type="module" crossorigin src="/assets/index-HYplFb5X.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DE4E9tF3.css">
   </head>
   <body>
     <div id="root"></div>
