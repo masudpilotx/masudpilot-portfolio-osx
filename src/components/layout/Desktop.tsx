@@ -177,7 +177,7 @@ export const Desktop: React.FC = () => {
 
 
         {/* Desktop Icons - Positioned to the right, responsive */}
-        <div className="absolute top-24 sm:top-32 md:top-[180px] right-4 sm:right-8 md:right-12 z-0 flex flex-col gap-4 sm:gap-6 items-center">
+        <div className="absolute top-16 sm:top-24 md:top-32 right-4 sm:right-8 md:right-12 z-0 flex flex-col gap-4 sm:gap-6 items-center">
             <DesktopIcon 
               icon="/icons/mail.ico" 
               label="Contact" 
