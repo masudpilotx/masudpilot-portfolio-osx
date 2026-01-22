@@ -96,7 +96,7 @@ export const Dock: React.FC = () => {
       {/* Dock container with relative positioning */}
       <div className="relative w-full sm:w-auto">
         {/* Background layer - scales with content */}
-        <div className="absolute bottom-0 left-0 right-0 h-[65px] sm:h-[65px] bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl shadow-2xl" />
+        <div className="absolute bottom-0 left-0 right-0 h-[50px] sm:h-[65px] bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-2xl" />
         
         {/* Icons container - scrollable on mobile */}
         <div className="relative flex items-end px-4 sm:px-3 pb-2 sm:pb-2 overflow-x-auto overflow-y-hidden no-scrollbar w-full sm:w-auto snap-x snap-mandatory">
