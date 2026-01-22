@@ -19,9 +19,14 @@ const DockItem: React.FC<DockItemProps> = ({ id, icon: Icon, label, isOpen, mous
 
   // Responsive sizes: smaller on mobile to fit all icons without scrolling
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
-  // Mobile needs to fit ~13 items in ~350px. 350/13 = ~26px.
-  const baseSize = isMobile ? 22 : 45;
-  const hoverSize = isMobile ? 32 : 90;
+  // Mobile: ~13 items. Try baseSize 25px + 4px gap = 29px/item * 13 = ~377px (too wide for 360px?)
+  // Let's try baseSize 24px + 2px gap (mx-[1px])? No user wants spacing.
+  // Let's try baseSize 23px + 4px gap (mx-0.5) => 27 * 13 = 351px. Fits 360px tight.
+  // User asked for "bigger" and "spaced".
+  // Let's go with baseSize 25 and tight margins, or 24 and wider margins.
+  // 24px + mx-0.5 (4px gap) = 28px * 12 items + divider = ~340-350px. Safe.
+  const baseSize = isMobile ? 24 : 45;
+  const hoverSize = isMobile ? 35 : 90;
   const widthSync = useTransform(distance, [-150, 0, 150], [baseSize, hoverSize, baseSize]);
   const width = useSpring(widthSync, { mass: 0.1, stiffness: 350, damping: 20 });
 
@@ -29,7 +34,7 @@ const DockItem: React.FC<DockItemProps> = ({ id, icon: Icon, label, isOpen, mous
     <motion.div
       id={`dock-item-${id}`}
       style={{ width }}
-      className="aspect-square flex flex-col items-center justify-end relative group cursor-pointer mb-1 mx-[1px] sm:mx-1"
+      className="aspect-square flex flex-col items-center justify-end relative group cursor-pointer mb-1 mx-0.5 sm:mx-1"
       onClick={onClick}
     >
         {/* No background container - pure icon float */}
