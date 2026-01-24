@@ -122,7 +122,7 @@ export const Desktop: React.FC = () => {
 
   const getWallpaper = () => {
     switch (system.wallpaper) {
-      case 'tahoe': return system.darkMode ? 'url(/wallpapers/tahoe-dark.png)' : 'url(/wallpapers/tahoe-light.png)';
+      case 'tahoe': return system.darkMode ? 'url(/wallpapers/tahoe-dark.webp)' : 'url(/wallpapers/tahoe-light.webp)';
       case 'sonoma': return 'url(https://4kwallpapers.com/images/wallpapers/macos-sonoma-6016x3384-11457.jpg)';
       case 'ventura': return 'url(https://4kwallpapers.com/images/wallpapers/macos-ventura-5k-6016x3384-8841.jpg)';
       case 'monterey': return 'url(https://4kwallpapers.com/images/wallpapers/macos-monterey-stock-purple-dark-mode-layers-5k-6016x3384-5898.jpg)';

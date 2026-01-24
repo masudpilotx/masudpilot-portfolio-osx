@@ -8,7 +8,7 @@ export const ProfileSticker: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
 
   // The transparent cutout image
-  const cutoutImage = "/images/masud_cutout.png";
+  const cutoutImage = "/images/masud_cutout.webp";
 
   // Spring animation config (more wobbly/bouncy to match reference)
   const springConfig = { type: "spring" as const, stiffness: 400, damping: 15, mass: 0.8 };
