@@ -1,4 +1,4 @@
-# 🍎 macOS Portfolio | React Developer Portfolio Template
+# 🍎 Pilot macOS Portfolio
 
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=flat&logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -8,7 +8,7 @@
 
 > **A stunning, pixel-perfect macOS-style portfolio website** built with React, TypeScript, and Framer Motion. Perfect for developers, designers, and creatives who want a unique portfolio that stands out.
 
-🔗 **[Live Demo](https://masudpilotx.github.io/masudpilot-portfolio-osx)** | 📦 **[Use This Template](#-getting-started)**
+🔗 **[Live Demo](https://pilot.is-a.dev)** | 📦 **[Use This Template](#-getting-started)**
 
 ![macOS Portfolio Preview](public/screenshots/preview.png)
 
@@ -59,8 +59,8 @@
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/masudpilotx/masudpilot-portfolio-osx.git
-   cd masudpilot-portfolio-osx
+   git clone https://github.com/masudpilotx/pilot-macos-portfolio.git
+   cd pilot-macos-portfolio
    ```
 
 2. **Install dependencies**
@@ -92,29 +92,35 @@ npm run build
 
 The output will be in the `dist` directory, ready to be deployed to Vercel, Netlify, or GitHub Pages.
 
-## � Deployment
+## 🚀 Deployment
 
 ### GitHub Pages (Automated)
 
 This project is configured to deploy to GitHub Pages easily.
 
 1.  **Configure `vite.config.ts`**:
+    - If deploying to a **custom domain** (like `pilot.is-a.dev`), set `base: "/"`.
     - If deploying to a user site (e.g., `username.github.io`), set `base: "/"`.
     - If deploying to a project site (e.g., `username.github.io/repo`), set `base: "/repo-name/"`.
 
-2.  **Deploy**:
+2.  **Set up your Custom Domain (Optional)**:
+    - Create a `CNAME` file in the `public/` folder containing your domain (e.g., `pilot.is-a.dev`).
+    - Configure your DNS to point to GitHub Pages.
+
+3.  **Deploy**:
     Run the following command to build and deploy to the `gh-pages` branch:
 
     ```bash
     npm run deploy
     ```
 
-3.  **Enable GitHub Pages**:
+4.  **Enable GitHub Pages**:
     - Go to Repository Settings -> Pages.
     - Select Source: **Deploy from a branch**.
     - Select Branch: **gh-pages**.
+    - Add your Custom Domain if applicable.
 
-## �📁 Project Structure
+## 📁 Project Structure
 
 ```
 src/

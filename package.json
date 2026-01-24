@@ -1,5 +1,5 @@
 {
-  "name": "masudpilot-portfolio-osx",
+  "name": "pilot-macos-portfolio",
   "description": "A stunning macOS-style portfolio website built with React, TypeScript & Framer Motion",
   "keywords": [
     "portfolio",
@@ -14,9 +14,9 @@
   "author": "Masud Pilot <https://github.com/masudpilotx>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/masudpilotx/masudpilot-portfolio-osx.git"
+    "url": "https://github.com/masudpilotx/pilot-macos-portfolio.git"
   },
-  "homepage": "https://masudpilotx.github.io/masudpilot-portfolio-osx",
+  "homepage": "https://pilot.is-a.dev",
   "private": true,
   "version": "1.0.0",
   "type": "module",
